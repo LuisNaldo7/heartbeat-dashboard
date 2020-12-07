@@ -1,0 +1,15 @@
+import React from 'react';
+
+import './App.css';
+
+import { Dashboard } from './dashboard';
+
+function App() {
+  return(
+    <div class="container">
+      <Dashboard />
+    </div>
+  )
+}
+
+export default App;
