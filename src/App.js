@@ -1,15 +1,19 @@
+import { render } from '@testing-library/react';
 import React from 'react';
 
 import './App.css';
 
 import { Dashboard } from './dashboard';
 
-function App() {
-  return(
-    <div class="container">
-      <Dashboard />
-    </div>
-  )
+class App extends React.Component {
+  render() {
+    return(
+      <div class="container">
+        <Dashboard />
+      </div>
+    )
+  }
+  
 }
 
 export default App;
