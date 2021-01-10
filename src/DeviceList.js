@@ -25,7 +25,7 @@ export default class DeviceList extends React.Component {
 
   componentDidMount() {
     setInterval(() => {
-      axios.get(`http://nils-pc2:3000/test/dashboard`) 
+      axios.get(`http://nils-pc2:3000/stats/devices`) 
         .then(res => {
           const devices = res.data;
           this.setState({ devices });
