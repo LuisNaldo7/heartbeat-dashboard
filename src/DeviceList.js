@@ -13,7 +13,7 @@ export default class DeviceList extends React.Component {
     if (val != null) {
       let ts = new Date(val);
       val = ts.getFullYear() + "-" + 
-            ts.getMonth().toString().padStart(2, '0') + "-" + 
+            (ts.getMonth() +1).toString().padStart(2, '0') + "-" + 
             ts.getDate().toString().padStart(2, '0') + " " + 
             ts.getHours().toString().padStart(2, '0') + ":" + 
             ts.getMinutes().toString().padStart(2, '0') + ":" + 
