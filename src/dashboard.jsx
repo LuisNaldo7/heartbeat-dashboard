@@ -1,5 +1,4 @@
 import React from 'react';
-
 import DeviceList from './DeviceList.js'
 
 class Dashboard extends React.Component {

@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-
 import './deviceList.css';
 
 export default class DeviceList extends React.Component {
@@ -25,15 +24,13 @@ export default class DeviceList extends React.Component {
 
   componentDidMount() {
     setInterval(() => {
-      axios.get(`http://nils-pc2:3000/stats/devices`) 
+      axios.get(process.env.REACT_APP_HEARTBEAT_SERVER + `/stats/devices`) 
         .then(res => {
           const devices = res.data;
           this.setState({ devices });
         })
     }, 1000)
   }
-
-  
 
   render() {
     return (
