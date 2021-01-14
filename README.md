@@ -8,11 +8,11 @@ build image
 
 execute image
 
-    docker run -d -p 3001:3000 -e REACT_APP_HEARTBEAT_SERVER="http://localhost:3000" --rm --name heartbeat-dashboard luisnaldo7/heartbeat-dashboard:latest
+    docker run -d -p 3001:3001 -e REACT_APP_HEARTBEAT_SERVER="http://localhost:3000" --rm --name heartbeat-dashboard luisnaldo7/heartbeat-dashboard:latest
 
 run container on boot
 
-    docker run -d -p 3001:3000 -e REACT_APP_HEARTBEAT_SERVER="http://localhost:3000" --restart always --name heartbeat-dashboard luisnaldo7/heartbeat-dashboard:latest
+    docker run -d -p 3001:3001 -e REACT_APP_HEARTBEAT_SERVER="http://localhost:3000" --restart always --name heartbeat-dashboard luisnaldo7/heartbeat-dashboard:latest
 
 
 
