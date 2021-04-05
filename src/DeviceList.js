@@ -4,32 +4,37 @@ import './deviceList.css';
 
 export default class DeviceList extends React.Component {
   state = {
-    devices: []
-  }
+    devices: [],
+  };
 
   formatTime(val) {
-
     if (val != null) {
       let ts = new Date(val);
-      val = ts.getFullYear() + "-" + 
-            (ts.getMonth() +1).toString().padStart(2, '0') + "-" + 
-            ts.getDate().toString().padStart(2, '0') + " " + 
-            ts.getHours().toString().padStart(2, '0') + ":" + 
-            ts.getMinutes().toString().padStart(2, '0') + ":" + 
-            ts.getSeconds().toString().padStart(2, '0');
+      val =
+        ts.getFullYear() +
+        '-' +
+        (ts.getMonth() + 1).toString().padStart(2, '0') +
+        '-' +
+        ts.getDate().toString().padStart(2, '0') +
+        ' ' +
+        ts.getHours().toString().padStart(2, '0') +
+        ':' +
+        ts.getMinutes().toString().padStart(2, '0') +
+        ':' +
+        ts.getSeconds().toString().padStart(2, '0');
     }
-    return(val);
-
+    return val;
   }
 
   componentDidMount() {
     setInterval(() => {
-      axios.get(process.env.REACT_APP_HEARTBEAT_SERVER + `/stats/devices`) 
-        .then(res => {
+      axios
+        .get(process.env.REACT_APP_HEARTBEAT_SERVER + `/stats/devices`)
+        .then((res) => {
           const devices = res.data;
           this.setState({ devices });
-        })
-    }, 1000)
+        });
+    }, 1000);
   }
 
   render() {
@@ -44,18 +49,16 @@ export default class DeviceList extends React.Component {
           </thead>
           <tbody>
             {this.state.devices.map((device, index) => {
-              return(
+              return (
                 <tr>
                   <td>{device.description}</td>
                   <td>{this.formatTime(device.last_seen)}</td>
                 </tr>
-              )
+              );
             })}
           </tbody>
         </table>
       </div>
     );
   }
-
-  
 }

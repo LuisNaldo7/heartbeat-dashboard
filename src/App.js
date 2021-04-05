@@ -4,13 +4,12 @@ import { Dashboard } from './dashboard';
 
 class App extends React.Component {
   render() {
-    return(
+    return (
       <div class="container">
         <Dashboard />
       </div>
-    )
+    );
   }
-  
 }
 
 export default App;
