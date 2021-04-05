@@ -9,7 +9,7 @@ export default class DeviceList extends React.Component {
 
   formatTime(val) {
     if (val != null) {
-      let ts = new Date(val);
+      let ts = new Date(val * 1000);
       val =
         ts.getFullYear() +
         '-' +
