@@ -4,15 +4,15 @@
 
 build image
     
-    docker build -t luisnaldo7/heartbeat-dashboard:latest .
+    docker build --build-arg HEARTBEAT_SERVER="http://localhost:3000" -t luisnaldo7/heartbeat-dashboard:latest .
 
 execute image
 
-    docker run -d -p 3001:3001 -e REACT_APP_HEARTBEAT_SERVER="http://localhost:3000" --rm --name heartbeat-dashboard luisnaldo7/heartbeat-dashboard:latest
+    docker run -d -p 3001:3001 --rm --name heartbeat-dashboard luisnaldo7/heartbeat-dashboard:latest
 
 run container on boot
 
-    docker run -d -p 3001:3001 -e REACT_APP_HEARTBEAT_SERVER="http://localhost:3000" --restart always --name heartbeat-dashboard luisnaldo7/heartbeat-dashboard:latest
+    docker run -d -p 3001:3001 --restart always --name heartbeat-dashboard luisnaldo7/heartbeat-dashboard:latest
 
 
 

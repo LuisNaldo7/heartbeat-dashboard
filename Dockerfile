@@ -1,6 +1,7 @@
 FROM node:lts
 
-ENV REACT_APP_HEARTBEAT_SERVER="http://localhost:3000"
+ARG HEARTBEAT_SERVER="http://localhost:3000"
+ENV REACT_APP_HEARTBEAT_SERVER=$HEARTBEAT_SERVER
 
 # Create app directory
 WORKDIR /app
@@ -11,9 +12,13 @@ COPY ./public ./public
 COPY package*.json ./
 
 # Install app dependencies
-RUN npm install
+RUN npm i --only=prod
 
+# Create production build
 RUN npm run build
 
+# Install serve
+RUN npm i -g serve
+
 EXPOSE 3001
-CMD [ "npm", "start"]
+ENTRYPOINT [ "serve", "-s", "build", "-l", "3001"]
