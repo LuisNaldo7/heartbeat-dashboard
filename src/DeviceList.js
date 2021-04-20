@@ -31,7 +31,7 @@ export default class DeviceList extends React.Component {
       axios
         .get(process.env.REACT_APP_HEARTBEAT_SERVER + `/stats/devices`)
         .then((res) => {
-          const devices = res.data;
+          const devices = res.data.devices;
           this.setState({ devices });
         });
     }, 1000);
