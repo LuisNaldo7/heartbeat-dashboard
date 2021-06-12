@@ -1,5 +1,5 @@
 import React from 'react';
-import DeviceList from './DeviceList.js'
+import DeviceList from './device-list.js'
 
 class Dashboard extends React.Component {
     render() {

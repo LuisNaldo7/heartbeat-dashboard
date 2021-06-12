@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import './deviceList.css';
+import './device-list.css';
 
 export default class DeviceList extends React.Component {
   state = {
