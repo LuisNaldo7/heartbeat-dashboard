@@ -52,7 +52,7 @@ export default class DeviceList extends React.Component {
               return (
                 <tr>
                   <td>{device.description}</td>
-                  <td>{this.formatTime(device.last_seen)}</td>
+                  <td>{this.formatTime(device.lastSeen)}</td>
                 </tr>
               );
             })}
