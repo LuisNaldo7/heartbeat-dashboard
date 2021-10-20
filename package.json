@@ -3,21 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.6",
-    "@testing-library/react": "^11.2.2",
-    "@testing-library/user-event": "^12.5.0",
-    "axios": "^0.21.1",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^0.23.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^0.2.4"
+    "react-scripts": "^4.0.3"
   },
   "scripts": {
     "start": "cross-env PORT=3001 react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "format": "prettier --write \"src/**/*.js\""
+    "format": "prettier --write \"src/**/*.js\"",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -39,6 +39,7 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
-    "prettier": "^2.3.1"
+    "husky": "^7.0.2",
+    "prettier": "^2.4.1"
   }
 }
