@@ -1,4 +1,4 @@
-FROM node:lts
+FROM node:16.13.1
 
 ARG HEARTBEAT_SERVER="http://localhost:3000"
 ENV REACT_APP_HEARTBEAT_SERVER=$HEARTBEAT_SERVER
@@ -6,13 +6,13 @@ ENV REACT_APP_HEARTBEAT_SERVER=$HEARTBEAT_SERVER
 # Create app directory
 WORKDIR /app
 
+# Install app dependencies
+COPY package*.json ./
+RUN npm i --only=production
+
 # Bundle app source
 COPY ./src ./src
 COPY ./public ./public
-COPY package*.json ./
-
-# Install app dependencies
-RUN npm i --only=prod
 
 # Create production build
 RUN npm run build
