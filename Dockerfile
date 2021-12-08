@@ -24,15 +24,18 @@ RUN npm run build
 # Run stage
 FROM node:16.13.1
 
+## Install serve
+RUN npm i -g serve
+
+## Switch to less privileged user
+USER node
+
 ## Create app directory
 WORKDIR /app
 
 ## Copy app
 COPY --from=build /app/node_modules ./node_modules
 COPY --from=build /app/build ./build
-
-## Install serve
-RUN npm i -g serve
 
 ## Execute app
 ENTRYPOINT [ "serve", "-s", "build", "-l", "3001"]
