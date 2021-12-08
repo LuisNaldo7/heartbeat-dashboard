@@ -1,24 +1,41 @@
-FROM node:16.13.1
+# Build stage
+FROM node:16.13.1 AS build
 
+## Declare env vars
 ARG HEARTBEAT_SERVER="http://localhost:3000"
 ENV REACT_APP_HEARTBEAT_SERVER=$HEARTBEAT_SERVER
 
-# Create app directory
+## Create app directory
 WORKDIR /app
 
-# Install app dependencies
+## Install app dependencies
 COPY package*.json ./
 RUN npm i --only=production
 
-# Bundle app source
+## Bundle app source
 COPY ./src ./src
 COPY ./public ./public
 
-# Create production build
+## Create production build
 RUN npm run build
 
-# Install serve
+
+
+# Run stage
+FROM node:16.13.1
+
+## Create app directory
+WORKDIR /app
+
+## Copy app
+COPY --from=build /app/node_modules ./node_modules
+COPY --from=build /app/build ./build
+
+## Install serve
 RUN npm i -g serve
 
-EXPOSE 3001
+## Execute app
 ENTRYPOINT [ "serve", "-s", "build", "-l", "3001"]
+
+## Expose port
+EXPOSE 3001
