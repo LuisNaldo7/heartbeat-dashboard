@@ -48,14 +48,20 @@ export default class DeviceList extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.devices.map((device, index) => {
-              return (
-                <tr>
-                  <td>{device.description}</td>
-                  <td>{this.formatTime(device.lastSeen)}</td>
-                </tr>
-              );
-            })}
+            {this.state.devices
+              .sort((a, b) => {
+                return a.description
+                  .toLowerCase()
+                  .localeCompare(b.description.toLowerCase());
+              })
+              .map((device, index) => {
+                return (
+                  <tr>
+                    <td>{device.description}</td>
+                    <td>{this.formatTime(device.lastSeen)}</td>
+                  </tr>
+                );
+              })}
           </tbody>
         </table>
       </div>
