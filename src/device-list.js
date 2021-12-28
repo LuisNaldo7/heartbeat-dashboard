@@ -37,6 +37,18 @@ export default class DeviceList extends React.Component {
     }, 1000);
   }
 
+  getCell_lastSeen(device) {
+    if (device.maxTimeoutExceeded) {
+      return (
+        <td>
+          <font color="#FFA579">{this.formatTime(device.lastSeen)}</font>
+        </td>
+      );
+    } else {
+      return <td>{this.formatTime(device.lastSeen)}</td>;
+    }
+  }
+
   render() {
     return (
       <div class="wrap-table">
@@ -48,14 +60,20 @@ export default class DeviceList extends React.Component {
             </tr>
           </thead>
           <tbody>
-            {this.state.devices.map((device, index) => {
-              return (
-                <tr>
-                  <td>{device.description}</td>
-                  <td>{this.formatTime(device.lastSeen)}</td>
-                </tr>
-              );
-            })}
+            {this.state.devices
+              .sort((a, b) => {
+                return a.description
+                  .toLowerCase()
+                  .localeCompare(b.description.toLowerCase());
+              })
+              .map((device, index) => {
+                return (
+                  <tr>
+                    <td>{device.description}</td>
+                    {this.getCell_lastSeen(device)}
+                  </tr>
+                );
+              })}
           </tbody>
         </table>
       </div>
