@@ -38,8 +38,7 @@ export default class DeviceList extends React.Component {
   }
 
   getCell_lastSeen(device) {
-    // should be determined by dedicated param
-    if (device.alertSentDiscord || device.alertSentMail) {
+    if (device.maxTimeoutExceeded) {
       return (
         <td>
           <font color="#FFA579">{this.formatTime(device.lastSeen)}</font>
