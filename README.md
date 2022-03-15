@@ -15,23 +15,28 @@ The Heartbeat-Dashboard visualizes all registered [Heartbeat-Clients](https://gi
 ![Diagram](https://github.com/LuisNaldo7/heartbeat-local-dev-env/blob/main/docs/components.png?raw=true)
 
 ---
+
 A full integration can be set up using the [Local Development Environment](https://github.com/LuisNaldo7/heartbeat-local-dev-env).
+
 ## Run in Docker
 
 build image
-    
-    docker build --build-arg HEARTBEAT_SERVER="http://localhost:3000" -t luisnaldo7/heartbeat-dashboard:latest .
+
+```
+docker build --build-arg HEARTBEAT_SERVER="http://localhost:3000" -t luisnaldo7/heartbeat-dashboard:latest -f docker/Dockerfile .
+```
 
 execute image
 
-    docker run -d -p 3001:3001 --rm --name heartbeat-dashboard luisnaldo7/heartbeat-dashboard:latest
+```
+docker run -d -p 3001:3001 --rm --name heartbeat-dashboard luisnaldo7/heartbeat-dashboard:latest
+```
 
 run container on boot
 
-    docker run -d -p 3001:3001 --restart always --name heartbeat-dashboard luisnaldo7/heartbeat-dashboard:latest
-
-
-
+```
+docker run -d -p 3001:3001 --restart always --name heartbeat-dashboard luisnaldo7/heartbeat-dashboard:latest
+```
 
 # Getting Started with Create React App
 
